@@ -1,15 +1,15 @@
-import { Client, Intents } from 'discord.js';
-import dotenv from 'dotenv';
-import * as fs from "fs";
-import { join } from 'path';
+const { Client, Intents } = require('discord.js');
+const dotenv = require('dotenv');
+const fs = require("fs");
+const { join } = require('path');
 
 dotenv.config();
 
 const intents = [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_INVITES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_PRESENCES]
 const client = new Client({ intents: intents});
 
-const commands: any  = {}
-const commandFiles = fs.readdirSync(join(__dirname, '.', 'commands/')).filter(file => file.endsWith('.ts'))
+const commands = {}
+const commandFiles = fs.readdirSync(join(__dirname, '.', 'commands/')).filter(file => file.endsWith('.js'))
 
 for (const file of commandFiles) {
     const command = require(join(__dirname, '.', 'commands/')+file);
@@ -18,8 +18,10 @@ for (const file of commandFiles) {
 
 client.once("ready", async () => {
     const data = []
+    console.log(commands)
     for (const commandName in commands) {
         data.push(commands[commandName].data)
+
     }
     if (client.isReady()){
         await client.application?.commands.set(data);
@@ -32,12 +34,12 @@ client.on("interactionCreate", async (interaction) => {
     if (!interaction.isCommand()) {
         return;
     }
-    const command = commands[interaction.commandName];
+    const command = commands[interaction?.commandName];
     try {
         await command.execute(interaction);
     } catch (error) {
         console.error(error);
-        await interaction.reply({
+        await interaction?.reply({
             content: 'There was an error while executing this command!',
             ephemeral: true
         })

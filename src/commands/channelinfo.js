@@ -1,14 +1,12 @@
-import {
-    CacheType,
+const {
     CategoryChannel,
-    CommandInteraction,
     MessageEmbed, NewsChannel, StageChannel,
     StoreChannel,
     TextChannel, ThreadChannel,
     VoiceChannel
-} from 'discord.js';
+} = require('discord.js');
 
-import * as fs from 'fs';
+const fs = require("fs");
 
 module.exports = {
     data: {
@@ -23,8 +21,8 @@ module.exports = {
             }
         ],
     },
-    async execute(interaction: CommandInteraction<CacheType>) {
-        function sort_permissions(permissions: string[]): string{
+    async execute(interaction) {
+        function sort_permissions(permissions){
             const perm_list = []
             try {
                 const bufferData = fs.readFileSync('./src/data/permissions_list.json', 'utf8')
@@ -36,8 +34,8 @@ module.exports = {
             } catch (e) {
                 console.log(e)
             }
-            const result: string[] = perm_list.filter(function( item ) {
-                return item != '`undefined`';
+            const result = perm_list.filter(function( item ) {
+                return item !== '`undefined`';
             });
             return result.join(', ')
         }

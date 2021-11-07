@@ -1,5 +1,5 @@
-import {CacheType, CommandInteraction, MessageEmbed} from 'discord.js';
-import fs from "fs";
+const { MessageEmbed } = require('discord.js');
+const fs = require("fs");
 
 module.exports = {
     data: {
@@ -14,7 +14,7 @@ module.exports = {
             }
         ],
     },
-    async execute(interaction: CommandInteraction<CacheType>) {
+    async execute(interaction) {
         if (!interaction.isCommand()) {
             return;
         }
@@ -52,13 +52,13 @@ module.exports = {
                 embed.addField('ニックネーム', `> ${member.user.username}`, true)
                 embed.addField('ステータス', member.presence ? `> ${presence_list[member.presence.status]}` : '> 不可', true)
                 embed.addField('Bot/User', member.user.bot ? '> Bot' : '> User', true)
-                embed.addField('バッチ', member.user.flags ?`> ${badge_list.join(', ')}` : '> なし')
+                embed.addField('バッチ', badge_list ?`> ${badge_list.join(', ')}` : '> なし')
                 embed.addField('アカウント作成日時', `> <t:${Math.floor(member.user.createdTimestamp / 1000)}:f>`)
                 embed.addField('サーバー参加日時', member.joinedTimestamp ? `> <t:${Math.floor(member.joinedTimestamp / 1000)}:f>` : '> 取得不可')
 
                 embed.addField(`役職 - ${member.roles.cache.size}`, `> ${member.roles.cache.map(r => r.name).join(', ')}`, true)
                 if (member.avatarURL()) {
-                    embed.setThumbnail(<string> member.avatarURL({format: 'png'}))
+                    embed.setThumbnail(member.avatarURL({format: 'png'}))
                 }
 
                 await interaction.reply({
@@ -76,10 +76,10 @@ module.exports = {
                 embed.addField('バッチ', user.flags ?`> ${badge_list.join(', ')}` : '> なし')
 
                 if (user.avatarURL()) {
-                    embed.setThumbnail(<string> user.avatarURL({format: 'png'}))
+                    embed.setThumbnail(user.avatarURL({format: 'png'}))
                 }
                 if (user.bannerURL()){
-                    embed.setImage(<string> user.bannerURL({format: 'png'}))
+                    embed.setImage(user.bannerURL({format: 'png'}))
                 }
 
                 await interaction.reply({

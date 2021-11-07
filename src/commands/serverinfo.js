@@ -1,11 +1,11 @@
-import {CacheType, CommandInteraction, MessageEmbed} from 'discord.js';
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: {
         name: 'server',
         description: 'このサーバーの情報を表示するよ！'
     },
-    async execute(interaction: CommandInteraction<CacheType>) {
+    async execute(interaction) {
         if (!interaction.isCommand()) {
             return;
         }
@@ -54,16 +54,16 @@ module.exports = {
             const sticker_count = String(guild_sticker.size)
             const max_sticker = premium_sticker[guild.premiumTier]
 
-            const channel_text: string = '```diff\n'+
+            const channel_text = '```diff\n'+
                 `+ カテゴリーチャンネル: ${category_ch}\n+ テキストチャンネル: ${text_ch}\n+ ボイスチャンネル: ${voice_ch}\n+ スレッドチャンネル: ${thread_ch}\n+ その他: ${other_ch}\n`
                 +`+ システムチャンネル: ${guild_system}\n`
                 +'```'
 
-            const member_text: string = '```diff\n'+
+            const member_text = '```diff\n'+
                 `+ メンバー: ${member_count}\n+ BOT: ${bot_count}\n- BANされた人数: ${ban_count}\n`
                 +'```'
 
-            const emoji_text: string = '```diff\n'+
+            const emoji_text = '```diff\n'+
                 `+ 絵文字: ${emoji_count}/${max_emoji}\n+ アニメーション: ${animated_count}/${max_emoji}\n+ スタンプ: ${sticker_count}/${max_sticker}\n`
                 +'```'
 

@@ -2,12 +2,9 @@
   "name": "information-bot",
   "version": "1.0.0",
   "description": "Information-interaction-Bot",
-  "main": "bot.ts",
+  "main": "bot.js",
   "scripts": {
-    "start": "node ./build/bot.js",
-    "debug": "ts-node src/bot.ts",
-    "compile": "tsc -p .",
-    "compile:test": "tsc -p . --noEmit"
+    "start": "node src/bot.js"
   },
   "dependencies": {
     "discord.js": "^13.1.0",
@@ -24,8 +21,6 @@
   },
   "homepage": "https://github.com/yutarou12/Information-Bot#readme",
   "devDependencies": {
-    "@types/node": "^16.11.6",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.4.4"
+    "@types/node": "^16.11.6"
   }
 }

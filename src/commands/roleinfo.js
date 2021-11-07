@@ -1,4 +1,4 @@
-import {CacheType, CommandInteraction, MessageEmbed} from 'discord.js';
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: {
@@ -13,7 +13,7 @@ module.exports = {
             }
         ],
     },
-    async execute(interaction: CommandInteraction<CacheType>) {
+    async execute(interaction) {
         if (!interaction.isCommand()) {
             return;
         }
@@ -32,7 +32,7 @@ module.exports = {
                 embed.addField('役職の色', `> ${role.hexColor}`, true)
                 embed.addField('権限', `> ${role.permissions.bitfield}`, true)
                 if (role.iconURL()) {
-                    embed.setThumbnail(<string> role.iconURL())
+                    embed.setThumbnail(role.iconURL())
                 }
                 await interaction.reply({
                     embeds: [embed],
