@@ -36,11 +36,11 @@ module.exports = {
 
             if (member) {
                 const presence_list = {
-                    'online': '<:online:871519745604726854> オンライン',
-                    'idle': '<:idle:871519802764718120> 退席中',
-                    'dnd': '<:dnd:871519779339522078> 取り込み中',
-                    'invisible': '<:offline:906819241003610153> インビジブル',
-                    'offline': '<:offline:906819241003610153> オフライン'
+                    'online': '<:Status_Online:906860685764460555> オンライン',
+                    'idle': '<:Status_Idle:906860686125182996> 退席中',
+                    'dnd': '<:Status_Dnd:906860686343299123> 取り込み中',
+                    'invisible': '<:Status_Offline:906860686066470922> オフライン',
+                    'offline': '<:Status_Offline:906860686066470922> オフライン'
                 }
 
 

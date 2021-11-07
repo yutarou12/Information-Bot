@@ -53,21 +53,21 @@ module.exports = {
             if (channel && member) {
                 const embeds = []
                 const ch_type = {
-                    'GUILD_TEXT': '<:text:906486466199293962> テキスト',
-                    'GUILD_VOICE': '<:voice:906485937175949343> ボイス',
-                    'GUILD_CATEGORY': '<:category:906486859180441640> カテゴリー',
-                    'GUILD_NEWS': '<:announce:906485937175949343> アナウンス',
-                    'GUILD_STORE': '<:store:906488084965756958> ストア',
-                    'GUILD_STAGE_VOICE': '<:stage:906488084995117076> ステージ',
-                    'GUILD_NEWS_THREAD': '<:thread:906486859213979688> ニューススレッド',
-                    'GUILD_PUBLIC_THREAD': '<:thread:906486859213979688> 公開スレッド',
-                    'GUILD_PRIVATE_THREAD': '<:thread:906486859213979688> 非公開スレッド'
+                    'GUILD_TEXT': '<:Channel_Text:906858885946703892> テキスト',
+                    'GUILD_VOICE': '<:Channel_Voice:906858885472747531> ボイス',
+                    'GUILD_CATEGORY': '<:Channel_Category:906858885921513522> カテゴリー',
+                    'GUILD_NEWS': '<:Channel_Announce:906858885594374185> アナウンス',
+                    'GUILD_STORE': '<:Channel_Store:906860211602604103> ストア',
+                    'GUILD_STAGE_VOICE': '<:Channel_Stage:906858885908926495> ステージ',
+                    'GUILD_NEWS_THREAD': '<:Channel_Thread:906858885976047646> ニューススレッド',
+                    'GUILD_PUBLIC_THREAD': '<:Channel_Thread:906858885976047646> 公開スレッド',
+                    'GUILD_PRIVATE_THREAD': '<:Channel_Thread:906858885976047646> 非公開スレッド'
                 }
                 const archive_time = {
                     60 : '1時間',
                     1440: '24時間',
-                    4320: '<:boost:906482605023690782> 3日間',
-                    10080: '<:boost:906482605023690782> 1週間',
+                    4320: '<:Nitro_Boost:906860014365446164> 3日間',
+                    10080: '<:Nitro_Boost:906860014365446164> 1週間',
                     'MAX': 'MAX'
                 }
                 const embed = new MessageEmbed({
